@@ -12,3 +12,6 @@
 
 /* Tighter About portrait framing, with the original image and colors untouched. */
 .portrait-frame img{transform:scale(1.42);transform-origin:50% 31%;object-position:50% 26%;filter:none}
+
+/* Portrait framing: upper-thigh crop, natural original color. */
+.portrait-frame img{transform:scale(1.78);transform-origin:50% 27%;object-position:50% 26%;filter:none}
