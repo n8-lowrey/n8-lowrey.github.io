@@ -13,3 +13,6 @@ Edit the text in the corresponding HTML file. The navigation is repeated in each
 
 ## Before sharing widely
 Review all text for accuracy, add actual project photos and documentation, and upload an approved resume PDF if desired. No stock photos or placeholder download links are included.
+
+## About portrait update
+The original full-resolution `portrait.png` is preserved without any retouching or color changes. The About page displays it in a 4:5 frame using CSS `object-fit: cover`, with the crop positioned toward the upper body. To adjust the crop, edit `.portrait-frame img` in `style.css`.
