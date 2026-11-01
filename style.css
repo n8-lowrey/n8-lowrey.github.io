@@ -129,3 +129,17 @@
 .site-header nav a{display:block;padding:12px 4px!important;font-size:14px}
 }
 @media(prefers-reduced-motion:reduce){.site-header{transition:none}}
+
+/* Consistent, understated page transitions and About experience */
+@view-transition { navigation: auto; }
+::view-transition-old(root) { animation: 160ms ease-in both n8-page-out !important; }
+::view-transition-new(root) { animation: 280ms ease-out both n8-page-in !important; }
+@keyframes n8-page-out { from {opacity:1} to {opacity:0} }
+@keyframes n8-page-in { from {opacity:0;transform:translateY(8px)} to {opacity:1;transform:translateY(0)} }
+.professional-experience { background:transparent !important; }
+.professional-experience h2 {font-size:clamp(2.1rem,4.3vw,3.65rem);letter-spacing:-.045em;margin-bottom:1.5rem;}
+.professional-experience .experience-entry,.professional-experience .experience-minimal { background:transparent !important; border:0 !important; border-left:0 !important; border-radius:0 !important; box-shadow:none !important; padding:1.4rem 0 0 !important; margin:0 !important; max-width:850px; border-top:1px solid #333 !important;}
+.professional-experience .experience-role {font-size:clamp(1.35rem,2.5vw,1.8rem);font-weight:700;color:#f4f4f4;letter-spacing:-.025em;}
+.professional-experience .experience-employer {color:#b7b7b7;}
+.professional-experience .experience-entry > p {line-height:1.8;color:#b7b7b7;}
+@media(prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none !important;}}
