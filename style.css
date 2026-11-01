@@ -112,3 +112,20 @@
 .experience-employer,.experience-date{opacity:.8;font-size:.92rem;margin:0}
 .license-badge{display:inline-block;border:1px solid rgba(108,207,232,.5);border-radius:100px;padding:.45rem .85rem;font-size:.83rem;letter-spacing:.02em;margin:1.2rem 0 .4rem;color:#a8e8f4;background:rgba(33,110,133,.12)}
 @media(max-width:650px){.experience-entry{padding:1rem}}
+
+/* Unified site navigation: applies identically on every page */
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(8,8,8,.97);backdrop-filter:blur(14px);border-bottom:1px solid #383838;transition:transform .22s ease}
+.site-header.is-hidden{transform:translateY(-110%)}
+.site-header .header-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px;height:auto;padding-top:12px;padding-bottom:12px;flex-wrap:nowrap}
+.site-header nav{display:flex;align-items:center;justify-content:flex-end;gap:clamp(10px,1.45vw,22px);margin:0;flex-wrap:nowrap}
+.site-header nav a{font-size:13px;font-weight:750;letter-spacing:.01em;color:#d7d7d7;white-space:nowrap}
+.site-header nav a:hover,.site-header nav a[aria-current=page]{color:#fff}
+.site-header .menu-toggle{display:none;appearance:none;font-family:inherit;font-size:13px;font-weight:750;color:#fff;background:transparent;border:1px solid #666;border-radius:4px;padding:10px 14px;cursor:pointer}
+@media(max-width:1100px){
+.site-header .header-inner{flex-wrap:wrap}
+.site-header .menu-toggle{display:block}
+.site-header nav{display:none!important;order:3;width:100%;flex-direction:column;align-items:stretch;gap:0;padding:12px 0 8px;border-top:1px solid #333}
+.site-header.menu-open nav{display:flex!important}
+.site-header nav a{display:block;padding:12px 4px!important;font-size:14px}
+}
+@media(prefers-reduced-motion:reduce){.site-header{transition:none}}
