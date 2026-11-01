@@ -1,1 +1,4 @@
-document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().getFullYear());
+document.querySelectorAll('[data-year]').forEach(e=>e.textContent=new Date().getFullYear());
+const header=document.querySelector('[data-smart-header]');const menu=document.querySelector('.menu-toggle');
+if(header){let last=window.scrollY;let scheduled=false;window.addEventListener('scroll',()=>{if(scheduled)return;scheduled=true;requestAnimationFrame(()=>{const y=window.scrollY;const delta=y-last;if(y<30||header.classList.contains('menu-open'))header.classList.remove('is-hidden');else if(delta>3&&y>120)header.classList.add('is-hidden');else if(delta< -2)header.classList.remove('is-hidden');last=y;scheduled=false;});},{passive:true});}
+if(menu&&header){menu.addEventListener('click',()=>{const open=header.classList.toggle('menu-open');menu.setAttribute('aria-expanded',String(open));menu.setAttribute('aria-label',open?'Close navigation menu':'Open navigation menu');menu.textContent=open?'Close':'Menu';header.classList.remove('is-hidden');});}
