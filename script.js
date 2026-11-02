@@ -34,7 +34,7 @@ document.querySelectorAll('[data-year]').forEach(el=>el.textContent=new Date().g
    leaving=true;
    page.classList.remove('n8-page-enter');
    page.classList.add('n8-page-leave');
-   setTimeout(()=>window.location.assign(destination.href),260);
+   setTimeout(()=>window.location.assign(destination.href),580);
  });
  window.addEventListener('pageshow',()=>{leaving=false;page.classList.remove('n8-page-leave');});
 })();
