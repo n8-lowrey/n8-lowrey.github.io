@@ -236,6 +236,29 @@ section.white>.inner>.city-photo img,section.sage>.inner>.city-photo img,section
 .steps article{padding-top:10px}
 .synthesis-grid{gap:14px!important}
 }
+</style><style id="policy-demo-contrast-and-timing">
+/* White, high-contrast animated cards within the existing charcoal exhibit. */
+.policy-demo .demo-node,.policy-demo .neighborhood,.policy-demo .summary-node{background:#fff!important;color:#1d1d1b!important;border-color:#e7e3dd!important}
+.policy-demo .demo-node b,.policy-demo .neighborhood b,.policy-demo .summary-node b,.policy-demo .summary-node span{color:#1d1d1b!important}
+.policy-demo .demo-node small,.policy-demo .neighborhood small{color:#514d47!important}
+.policy-demo .demo-icon{border-color:#69645d!important;color:#1d1d1b!important}
+.policy-demo .house-row span,.policy-demo .house-row .moving-house,.policy-demo .house-row .arriving-house{color:#34312d!important}
+.policy-demo .summary-outcome{background:#fff!important;border-color:#e7e3dd!important}
+.policy-demo .summary-outcome b,.policy-demo .summary-outcome span{color:#1d1d1b!important}
+@media(prefers-reduced-motion:no-preference){
+.policy-demo.is-playing .demo-node{animation-duration:1.1s!important}
+.policy-demo.is-playing .demo-node:nth-of-type(2){animation-delay:1.25s!important}
+.policy-demo.is-playing .demo-node:nth-of-type(3){animation-delay:2.5s!important}
+.policy-demo.is-playing .demo-node:nth-of-type(4){animation-delay:3.75s!important}
+.policy-demo.is-playing .demo-arrow{animation-duration:.8s!important;animation-delay:.85s!important}
+.policy-demo.is-playing .moving-house{animation-duration:3.2s!important;animation-delay:.9s!important}
+.policy-demo.is-playing .arriving-house{animation-duration:3.2s!important;animation-delay:1.6s!important}
+.policy-demo.is-playing .summary-node{animation-duration:1.1s!important}
+.policy-demo.is-playing .summary-node:nth-child(2){animation-delay:1.6s!important}
+.policy-demo.is-playing .summary-node:nth-child(3){animation-delay:3.2s!important}
+.policy-demo.is-playing .summary-connector{animation-duration:.9s!important;animation-delay:4.7s!important}
+.policy-demo.is-playing .summary-outcome{animation-duration:1.2s!important;animation-delay:5.5s!important}
+}
 </style></head><body><header><a href="research.html">← N8 / RESEARCH</a><a href="index.html">PORTFOLIO HOME</a></header>
 <section class="hero"><div class="inner"><div class="eyebrow">Government policy analysis · 2026</div><h1>Short-Term Rental Regulation in Corpus Christi</h1><p class="lede">When short-term rentals disrupt a neighborhood, is the problem the properties themselves—or how they are used and managed?</p></div></section>
 <section class="cream"><div class="inner"><div class="eyebrow">01 / The problem</div><h2>Corpus Christi, Texas</h2><figure class="city-photo"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Corpus_Christi_skyline.jpg?width=1200" alt="Corpus Christi skyline; illustrative location photograph, not a documented short-term rental disturbance" loading="lazy" referrerpolicy="no-referrer"><figcaption class="caption">Illustrative location photograph (not evidence of a specific rental complaint). Quintin Soloviev. (2025). <em>Corpus Christi skyline</em> [Photograph]. Wikimedia Commons. <a href="https://commons.wikimedia.org/wiki/File:Corpus_Christi_skyline.jpg">https://commons.wikimedia.org/wiki/File:Corpus_Christi_skyline.jpg</a>. CC BY 4.0.</figcaption></figure><p>Tourism is an important part of Corpus Christi's economy. An estimated 1,547 short-term rentals operated in the city at the time (City of Corpus Christi, 2026b). Short-term rentals provide places for visitors to stay and income for local property owners. But residents have raised concerns about loud parties, trespassing, overcrowding, and other disturbances at some rentals.</p><p>The problem is not simply that short-term rentals exist. It is how to stop disruptive behavior while allowing responsible owners to keep operating.</p><div class="eyebrow">02 / Council deliberations</div><h3>Corpus Christi City Council</h3><div class="two"><div><p>At the August 25, 2026 meeting, residents described disturbances around short-term rentals. Police Chief Mike Markle reported 39 related calls in recent months, while noting that not every incident met the threshold for a noise citation (City of Corpus Christi, 2026b).</p><p>The city's response focused on restricting where and how many rentals could receive permits. Such restrictions may reduce rental concentration, but the evidence presented here does not establish that they reduce verified disturbances at operating properties (City of Corpus Christi, 2026a).</p><p><strong>The question is how to address documented disturbances effectively while avoiding unnecessary restrictions on responsible operators.</strong></p></div><figure style="margin:0"><a class="video-access" href="https://www.youtube.com/watch?v=YCbvENPyF2I" target="_blank" rel="noopener noreferrer" aria-label="Open the official Corpus Christi City Council meeting recording on YouTube"><span class="play-symbol" aria-hidden="true">▶</span><strong>Official City Council meeting recording</strong><span>This recording cannot play inside the presentation because the video owner restricts embedding.</span><span class="watch-action">Watch on YouTube (opens new tab) ↗</span></a><figcaption class="caption">Figure 1. City of Corpus Christi. (2026, August 25). <em>City Council meeting recording</em> [Video]. YouTube. <a href="https://www.youtube.com/watch?v=YCbvENPyF2I">https://www.youtube.com/watch?v=YCbvENPyF2I</a>. Video begins at the start of the meeting.</figcaption></figure></div></div></section>
@@ -265,7 +288,7 @@ section.white>.inner>.city-photo img,section.sage>.inner>.city-photo img,section
     var timer=null;
     function replay(){panel.classList.remove('is-playing');void panel.offsetWidth;panel.classList.add('is-playing')}
     function stop(){if(timer!==null){clearInterval(timer);timer=null}panel.classList.remove('is-playing')}
-    function start(){if(reduced.matches||timer!==null)return;replay();timer=setInterval(replay,5400)}
+    function start(){if(reduced.matches||timer!==null)return;replay();timer=setInterval(replay,9000)}
     
     if('IntersectionObserver' in window){
       var observer=new IntersectionObserver(function(entries){entries.forEach(function(entry){if(entry.isIntersecting&&document.visibilityState!=='hidden')start();else stop()})},{threshold:0.12});
