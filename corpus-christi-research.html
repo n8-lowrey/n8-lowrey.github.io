@@ -177,14 +177,12 @@ section.white>.inner>.real-artifact,section.sage>.inner>.real-artifact,section.s
 .synthesis-grid p{line-height:1.7}
 .synthesis-conclusion{border-top:1px solid #969188;padding-top:22px;font-size:clamp(18px,2vw,23px);max-width:900px}
 @media(max-width:800px){.synthesis-grid{grid-template-columns:1fr;gap:25px}}
-/* Soft scroll-linked reveals: visible before entering viewport, with no hidden blank sections. */
+/* Scroll entrance animation: visible but softened before activation. */
 @media(prefers-reduced-motion:no-preference){
-@supports (animation-timeline: view()){
-section:not(.hero)>.inner{animation:none!important;animation-timeline:auto!important}
-}
-section:not(.hero)>.inner{opacity:1!important;transform:none!important}
-html.motion-ready section:not(.hero)>.inner{opacity:1!important;transform:none!important}
-html.motion-ready .synthesis-grid article{animation:none!important}
+@supports (animation-timeline:view()){section:not(.hero)>.inner{animation:none!important;animation-timeline:auto!important}}
+html.scroll-reveal section:not(.hero)>.inner{opacity:.42!important;transform:translate3d(0,34px,0)!important;transition:opacity 1.05s cubic-bezier(.22,1,.36,1),transform 1.05s cubic-bezier(.22,1,.36,1)!important}
+html.scroll-reveal section:not(.hero)>.inner.is-visible{opacity:1!important;transform:translate3d(0,0,0)!important}
+html.scroll-reveal .synthesis-grid article{animation:none!important}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}section>.inner{opacity:1!important;transform:none!important}}
 </style></head><body><header><a href="research.html">← N8 / RESEARCH</a><a href="index.html">PORTFOLIO HOME</a></header>
@@ -211,24 +209,18 @@ html.motion-ready .synthesis-grid article{animation:none!important}
 (function(){
   if(!('IntersectionObserver' in window) || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   var nodes=Array.prototype.slice.call(document.querySelectorAll('section:not(.hero) > .inner'));
-  nodes.forEach(function(el){el.style.willChange='opacity, transform';});
-  var raf=0;
-  function update(){
-    raf=0;
-    var vh=window.innerHeight||800;
-    nodes.forEach(function(el){
-      var rect=el.getBoundingClientRect();
-      if(rect.bottom<0 || rect.top>vh*1.6){el.style.opacity='1';el.style.transform='none';return;}
-      /* Begin while the section is still below the viewport; finish near the lower third. */
-      var progress=Math.max(0,Math.min(1,(vh*1.18-rect.top)/(vh*.53)));
-      var eased=1-Math.pow(1-progress,2);
-      el.style.opacity=String(.78+.22*eased);
-      el.style.transform='translate3d(0,'+(10*(1-eased)).toFixed(2)+'px,0)';
+  if(!nodes.length)return;
+  var vh=window.innerHeight||800;
+  /* Initial viewport is never obscured; only below-the-fold sections animate. */
+  nodes.forEach(function(el){
+    if(el.getBoundingClientRect().top < vh*.9) el.classList.add('is-visible');
+  });
+  document.documentElement.classList.add('scroll-reveal');
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){entry.target.classList.add('is-visible');observer.unobserve(entry.target);}
     });
-  }
-  function requestUpdate(){if(!raf)raf=requestAnimationFrame(update);}
-  update();
-  window.addEventListener('scroll',requestUpdate,{passive:true});
-  window.addEventListener('resize',requestUpdate,{passive:true});
+  },{rootMargin:'0px 0px 80px 0px',threshold:0.01});
+  nodes.forEach(function(el){if(!el.classList.contains('is-visible'))observer.observe(el);});
 })();
 </script></body></html>
